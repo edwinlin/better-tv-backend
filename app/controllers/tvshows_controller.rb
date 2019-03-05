@@ -26,4 +26,10 @@ class TvshowsController < ApplicationController
     @tvshow.destroy()
   end
 
+  private
+
+  def tvshow_params
+    params.permit(:name, :likes)
+  end
+
 end
