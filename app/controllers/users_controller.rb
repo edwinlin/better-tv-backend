@@ -7,13 +7,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # session[:user_id] = @user.id
     render json: @user
   end
 
   def create
-    @user = User.create(user_params)
-    # session[:user_id] = @user.id
+    @user = User.find_or_create_by(user_params)
     render json: @user
   end
 
