@@ -6,12 +6,13 @@ class TvshowsController < ApplicationController
   end
 
   def show
+    @user = User.find(session[:user_id])
     @tvshow = Tvshow.find(params[:id])
     render json: @tvshow
   end
 
   def create
-    @tvshow = Tvshow.create(tvshow_params)
+    @tvshow = Tvshow.find_or_create_by(tvshow_params)
     render json: @tvshow
   end
 
@@ -23,13 +24,13 @@ class TvshowsController < ApplicationController
 
   def destroy
     @tvshow = Tvshow.find(params[:id])
-    @tvshow.destroy()
+    @tvshow.destroy
   end
 
   private
 
   def tvshow_params
-    params.permit(:name, :likes)
+    params.permit(:name, :likes, :tvmaze_id)
   end
 
 end

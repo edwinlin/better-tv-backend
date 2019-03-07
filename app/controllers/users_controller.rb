@@ -7,11 +7,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # session[:user_id] = @user.id
     render json: @user
   end
 
   def create
     @user = User.create(user_params)
+    # session[:user_id] = @user.id
     render json: @user
   end
 
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy()
+    @user.destroy
   end
 
   private
