@@ -17,7 +17,8 @@ ActiveRecord::Schema.define(version: 2019_03_04_210110) do
 
   create_table "tvshows", force: :cascade do |t|
     t.string "name"
-    t.integer "likes"
+    t.integer "tvmaze_id"
+    t.integer "likes", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_210110) do
   create_table "user_shows", force: :cascade do |t|
     t.integer "tvshow_id"
     t.integer "user_id"
+    t.integer "ext_tvmaze_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
